@@ -1,0 +1,1099 @@
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-image: url("https://littleoceanbluestudio.com/cdn/shop/products/BlackCatGoldEyes.jpg?v=1679357603&width=1946");
+        background-size: cover; /* Ensures the image covers the entire background */
+        background-position: center; /* Centers the image */
+        background-attachment: fixed; /* Keeps the background still */
+        background-repeat: no-repeat; /* Prevents tiling */
+    color: var(--text-primary);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Centered Layout */
+.app-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 0 20px;
+}
+
+/* Navigation - Black with Gold Accents */
+.navbar {
+    background-color: var(--primary-color);
+    padding: 1rem 0;
+    border-bottom: 2px solid var(--secondary-color);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    color: var(--secondary-color);
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.nav-links a {
+    color: var(--text-primary);
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.nav-links a:hover {
+    color: var(--secondary-color);
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--secondary-color);
+    transition: width 0.3s;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.nav-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--secondary-color);
+}
+
+.nav-avatar-placeholder {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--card-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--secondary-color);
+    font-weight: 700;
+    border: 2px solid var(--secondary-color);
+}
+
+.unread-count-badge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: var(--gold-gradient);
+    color: var(--primary-color);
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+.logout-btn {
+    background: transparent;
+    border: 2px solid var(--secondary-color);
+    color: var(--secondary-color);
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.logout-btn:hover {
+    background: var(--secondary-color);
+    color: var(--primary-color);
+}
+
+/* Main Content - Centered Cards */
+.main-content {
+    flex: 1;
+    padding: 2rem 0;
+}
+
+/* Cards - Gold Accents */
+.card {
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: var(--shadow);
+    border-left: 4px solid var(--secondary-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Conversation List - Luxurious Style */
+.conversation-list-container {
+    padding: 1rem 0;
+}
+
+.conversations-grid {
+    display: grid;
+    gap: 1rem;
+}
+
+.conversation-card {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--text-primary);
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.conversation-card:hover {
+    border-color: var(--secondary-color);
+    background-color: rgba(255, 215, 0, 0.05);
+}
+
+.conversation-card.unread {
+    border-left: 4px solid var(--secondary-color);
+}
+
+.conversation-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--background);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1rem;
+    overflow: hidden;
+    border: 2px solid var(--secondary-color);
+}
+
+.conversation-info h3 {
+    color: var(--secondary-color);
+    margin-bottom: 0.25rem;
+}
+
+.last-message {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.time {
+    font-size: 0.8rem;
+    color: var(--accent-color);
+}
+
+/* Conversation Page - Elegant Messaging */
+.conversation-page {
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 80px);
+    background-color: var(--background);
+}
+
+.conversation-header {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    background-color: var(--primary-color);
+    border-bottom: 1px solid var(--secondary-color);
+}
+
+.back-button {
+    background: none;
+    border: none;
+    color: var(--secondary-color);
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    margin-right: 1rem;
+}
+
+.messages-container {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1rem;
+    background-color: var(--background);
+}
+
+.message {
+    max-width: 70%;
+    margin-bottom: 1rem;
+    padding: 0.75rem 1rem;
+    border-radius: 12px;
+    position: relative;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.message.sent {
+    background: var(--gold-gradient);
+    color: var(--primary-color);
+    margin-left: auto;
+    border-bottom-right-radius: 4px;
+}
+
+.message.received {
+    background-color: var(--card-bg);
+    margin-right: auto;
+    border-bottom-left-radius: 4px;
+    border: 1px solid var(--accent-color);
+}
+
+.message-time {
+    font-size: 0.75rem;
+    opacity: 0.8;
+}
+
+.message-actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.action-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: inherit;
+    font-size: 0.9rem;
+    padding: 0.25rem;
+    border-radius: 4px;
+    transition: background 0.2s;
+}
+
+.reply-btn {
+    color: var(--secondary-color);
+}
+
+.delete-btn {
+    color: var(--error-color);
+}
+
+.reply-indicator {
+    padding: 0.75rem;
+    background-color: var(--card-bg);
+    border-top: 1px solid var(--secondary-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.message-form {
+    padding: 1rem;
+    background-color: var(--primary-color);
+    border-top: 1px solid var(--secondary-color);
+}
+
+.message-input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--accent-color);
+    border-radius: 4px;
+    background-color: var(--card-bg);
+    color: var(--text-primary);
+    resize: none;
+}
+
+.send-btn {
+    background: var(--gold-gradient);
+    color: var(--primary-color);
+    border: none;
+    padding: 0.5rem 1.5rem;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 0.5rem;
+    float: right;
+}
+
+/* Forms - Elegant Styling */
+.auth-container,
+.profile-container,
+.create-post-container {
+    max-width: 500px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    border-top: 4px solid var(--secondary-color);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--secondary-color);
+    font-weight: 500;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--accent-color);
+    border-radius: 4px;
+    background-color: var(--background);
+    color: var(--text-primary);
+    font-family: 'Montserrat', sans-serif;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 0.75rem;
+    background: var(--gold-gradient);
+    color: var(--primary-color);
+    border: none;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+}
+
+/* Utility Classes */
+.loading {
+    text-align: center;
+    padding: 2rem;
+    color: var(--secondary-color);
+}
+
+.error {
+    color: var(--error-color);
+    text-align: center;
+    padding: 1rem;
+    background-color: rgba(229, 57, 53, 0.1);
+    border-radius: 4px;
+    margin: 1rem 0;
+}
+
+.error-message {
+    color: var(--error-color);
+    padding: 0.75rem;
+    border-radius: 4px;
+    background-color: rgba(229, 57, 53, 0.1);
+    margin-bottom: 1rem;
+}
+
+.success-message {
+    color: var(--success-color);
+    padding: 0.75rem;
+    border-radius: 4px;
+    background-color: rgba(76, 175, 80, 0.1);
+    margin-bottom: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .app-container {
+        padding: 0 1rem;
+    }
+
+    .nav-links {
+        gap: 0.75rem;
+    }
+
+    .conversation-card {
+        padding: 0.75rem;
+    }
+
+    .message {
+        max-width: 85%;
+    }
+}
+
+/* Posts Page Styles */
+.posts-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.posts-container h1 {
+    color: var(--secondary-color);
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    border-bottom: 2px solid var(--secondary-color);
+    padding-bottom: 0.5rem;
+}
+
+.posts-list {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.post-card {
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+    border-left: 4px solid var(--secondary-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.post-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.post-card h3 {
+    color: var(--secondary-color);
+    margin-bottom: 0.75rem;
+    font-size: 1.25rem;
+}
+
+.post-description {
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+
+.post-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+}
+
+.post-author {
+    color: var(--secondary-color);
+    font-weight: 500;
+}
+
+.post-time {
+    color: var(--accent-color);
+}
+
+.favorite-btn {
+    background: transparent;
+    border: 1px solid var(--secondary-color);
+    color: var(--secondary-color);
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.favorite-btn:hover {
+    background: rgba(255, 215, 0, 0.1);
+}
+
+.favorite-btn.active {
+    background: var(--gold-gradient);
+    color: var(--primary-color);
+    border-color: transparent;
+}
+
+/* Post Detail Page Styles */
+.post-detail-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.back-button {
+    background: transparent;
+    border: none;
+    color: var(--secondary-color);
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: background 0.3s;
+}
+
+.back-button:hover {
+    background: rgba(255, 215, 0, 0.1);
+}
+
+.post-detail-card {
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: var(--shadow);
+    border-left: 4px solid var(--secondary-color);
+}
+
+.post-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.author-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+}
+
+.author-avatar-placeholder {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--background);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--secondary-color);
+    font-weight: 700;
+    font-size: 1.25rem;
+    border: 2px solid var(--secondary-color);
+}
+
+.author-name {
+    color: var(--secondary-color);
+    font-weight: 500;
+}
+
+.post-content {
+    margin-bottom: 2rem;
+}
+
+.post-content h2 {
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.post-meta {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+    color: var(--accent-color);
+    font-size: 0.9rem;
+}
+
+.comments-section {
+    margin-top: 2rem;
+}
+
+.comments-section h3 {
+    color: var(--secondary-color);
+    margin-bottom: 1.5rem;
+    font-size: 1.25rem;
+    border-bottom: 1px solid var(--accent-color);
+    padding-bottom: 0.5rem;
+}
+
+.comment-form {
+    margin-bottom: 2rem;
+}
+
+.comment-form textarea {
+    width: 100%;
+    padding: 1rem;
+    background-color: var(--background);
+    border: 1px solid var(--accent-color);
+    border-radius: 4px;
+    color: var(--text-primary);
+    font-family: inherit;
+    resize: vertical;
+    min-height: 100px;
+    margin-bottom: 1rem;
+}
+
+.submit-btn {
+    background: var(--gold-gradient);
+    color: var(--primary-color);
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+}
+
+.submit-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.login-prompt {
+    background-color: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: 8px;
+    text-align: center;
+    margin-bottom: 2rem;
+    border: 1px solid var(--accent-color);
+}
+
+.login-prompt p {
+    margin-bottom: 1rem;
+}
+
+.login-btn {
+    background: var(--gold-gradient);
+    color: var(--primary-color);
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.comments-list {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.comment-card {
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    padding: 1.5rem;
+    border-left: 2px solid var(--accent-color);
+}
+
+.comment-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.comment-author {
+    color: var(--secondary-color);
+    font-weight: 500;
+}
+
+.comment-time {
+    color: var(--accent-color);
+}
+
+.comment-text {
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+.no-comments {
+    text-align: center;
+    color: var(--accent-color);
+    font-style: italic;
+    padding: 2rem 0;
+}
+
+/* Favorites Page Styles */
+.favorites-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.favorites-container h1 {
+    color: var(--secondary-color);
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    border-bottom: 2px solid var(--secondary-color);
+    padding-bottom: 0.5rem;
+}
+
+.remove-favorite-btn {
+    background: transparent;
+    border: 1px solid var(--error-color);
+    color: var(--error-color);
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.remove-favorite-btn:hover {
+    background: rgba(229, 57, 53, 0.1);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .posts-container,
+    .post-detail-container,
+    .favorites-container {
+        padding: 0 1rem;
+    }
+
+    .post-card,
+    .post-detail-card,
+    .comment-card {
+        padding: 1.25rem;
+    }
+
+    .post-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .post-meta {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+}
+/* Golden Frame Styles */
+.golden-frame {
+    border: 4px solid #FFD700;
+    border-radius: 50%;
+    padding: 3px;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+/* Avatar Container */
+.avatar-container {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 20px;
+}
+
+.profile-avatar {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* Avatar Placeholder */
+.avatar-placeholder {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: #4a6fa5;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+/* Profile Header Adjustments */
+.profile-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.profile-info {
+    margin-top: 20px;
+}
+
+/* For ProfilePage specific styles */
+.profile-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.profile-form {
+    width: 100%;
+    max-width: 500px;
+    margin-top: 30px;
+}
+/* Golden Frame Styles */
+.golden-frame {
+    border: 4px solid #FFD700;
+    border-radius: 50%;
+    padding: 3px;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    background: linear-gradient(135deg, rgba(255,215,0,0.2) 0%, rgba(255,255,255,0.1) 50%, rgba(255,215,0,0.2) 100%);
+}
+
+/* Avatar Container */
+.avatar-container {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 20px;
+    position: relative;
+}
+
+.profile-avatar {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Avatar Placeholder */
+.avatar-placeholder {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: #4a6fa5;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+/* Profile Header Adjustments */
+.profile-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.profile-info {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Profile Page Specific Styles */
+.profile-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.profile-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.profile-info {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.profile-info h3 {
+    margin-top: 15px;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.profile-form {
+    width: 100%;
+    max-width: 500px;
+}
+
+/* Message button styling */
+.message-button {
+    margin-top: 15px;
+    padding: 8px 20px;
+    background-color: #4a6fa5;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.message-button:hover {
+    background-color: #3a5a80;
+}
+/* Black & Gold Theme with 80% transparency */
+:root {
+    --primary-color: rgba(0, 0, 0, 0.8); /* 80% transparency */
+    --secondary-color: rgba(255, 215, 0, 0.8); /* 80% transparency */
+    --accent-color: rgba(192, 192, 192, 0.8); /* 80% transparency */
+    --background: rgba(18, 18, 18, 0.8); /* 80% transparency */
+    --card-bg: rgba(30, 30, 30, 0.8); /* 80% transparency */
+    --text-primary: rgba(255, 255, 255, 0.9); /* 90% opacity for readability */
+    --text-secondary: rgba(204, 204, 204, 0.9);
+    --error-color: rgba(229, 57, 53, 0.8);
+    --success-color: rgba(76, 175, 80, 0.8);
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    --gold-gradient: linear-gradient(135deg, rgba(255, 215, 0, 0.8) 0%, rgba(255, 165, 0, 0.8) 100%);
+}
+
+/* Modern Font & Base Styles */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    position: relative;
+    color: var(--text-primary);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Background with 20% blur */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("https://i.pinimg.com/474x/2a/b7/43/2ab743de091ed9894b9a1435fe5526e7.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    filter: blur(4px); /* 20% blur effect */
+    z-index: -2;
+}
+
+/* Semi-transparent overlay */
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2); /* Light overlay to enhance readability */
+    z-index: -1;
+}
+
+/* Main content container */
+.app-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 0 20px;
+    backdrop-filter: blur(2px); /* Additional subtle blur for content */
+}
+
+/* Navigation - Black with Gold Accents */
+.navbar {
+    background-color: var(--primary-color);
+    padding: 1rem 0;
+    border-bottom: 2px solid var(--secondary-color);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(4px); /* 20% blur */
+}
+
+/* Cards with transparency and blur */
+.card {
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: var(--shadow);
+    border-left: 4px solid var(--secondary-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    backdrop-filter: blur(4px); /* 20% blur */
+}
+
+/* Forms with transparency */
+.auth-container,
+.profile-container,
+.create-post-container {
+    background-color: var(--card-bg);
+    backdrop-filter: blur(4px); /* 20% blur */
+}
+
+/* Golden Frame with transparency */
+.golden-frame {
+    border: 4px solid var(--secondary-color);
+    border-radius: 50%;
+    padding: 3px;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    background: linear-gradient(135deg, rgba(255,215,0,0.2) 0%, rgba(255,255,255,0.1) 50%, rgba(255,215,0,0.2) 100%);
+    backdrop-filter: blur(2px);
+}
+
+/* Update all other elements to use rgba colors with transparency */
+.nav-links a {
+    color: var(--text-primary);
+
+}
+
+/* Make sure text remains readable */
+h1, h2, h3, h4, h5, h6, p, span {
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* Input fields with transparency */
+input, textarea {
+    background-color: rgba(30, 30, 30, 0.7) !important;
+    border: 1px solid var(--accent-color) !important;
+    backdrop-filter: blur(2px);
+}
+
+/* Buttons with transparency */
+button {
+    backdrop-filter: blur(2px);
+}
